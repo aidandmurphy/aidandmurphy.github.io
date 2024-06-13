@@ -1,37 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog2-Browser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <title>Blog</title>
 </head>
-<body>
-    <h1>Blog-Browser</h1>
-    <ul id="fileList"></ul>
 
-    <script>
-        window.onload = function() {
-            var fileList = document.getElementById('fileList');
-            fetch('./')
-                .then(response => response.text())
-                .then(text => {
-                    var parser = new DOMParser();
-                    var htmlDoc = parser.parseFromString(text, 'text/html');
-                    var links = htmlDoc.querySelectorAll('a');
-                    links.forEach(link => {
-                        var fileName = link.getAttribute('href');
-                        if (fileName !== './') {
-                            var listItem = document.createElement('li');
-                            var linkItem = document.createElement('a');
-                            linkItem.textContent = fileName;
-                            linkItem.href = fileName;
-                            listItem.appendChild(linkItem);
-                            fileList.appendChild(listItem);
-                        }
-                    });
-                })
-                .catch(error => console.error('Error fetching file list:', error));
-        };
-    </script>
-</body>
-</html>
+
+<style>
+  h1{
+    text-align: center;
+    font-family: Mulish;
+  }
+    p{
+        text-align: left;
+    font-family: Mulish;
+  }
+  .  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+</style>
+
+<div class= "flex">
+  <h1>blog.html</h1>
+  <p style="text-align: center"><a href="index.html" >home</a></p>
+  <a href="0001.md" >0001.md</a>
+</div>
