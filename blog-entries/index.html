@@ -19,12 +19,15 @@
                     var htmlDoc = parser.parseFromString(text, 'text/html');
                     var links = htmlDoc.querySelectorAll('a');
                     links.forEach(link => {
-                        var listItem = document.createElement('li');
-                        var linkItem = document.createElement('a');
-                        linkItem.textContent = link.textContent;
-                        linkItem.href = link.href;
-                        listItem.appendChild(linkItem);
-                        fileList.appendChild(listItem);
+                        var fileName = link.getAttribute('href');
+                        if (fileName !== './') {
+                            var listItem = document.createElement('li');
+                            var linkItem = document.createElement('a');
+                            linkItem.textContent = fileName;
+                            linkItem.href = fileName;
+                            listItem.appendChild(linkItem);
+                            fileList.appendChild(listItem);
+                        }
                     });
                 })
                 .catch(error => console.error('Error fetching file list:', error));
